@@ -7,3 +7,5 @@ if __name__=="__main__":
                 fo.write(line)
                 line = sys.stdin.readline()
         fo.close()
+        sys.stdout.write("yesssss got it")
+        sys.stdout.flush()

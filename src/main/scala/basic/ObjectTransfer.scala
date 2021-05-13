@@ -1,3 +1,4 @@
+package basic
 import com.google.gson.Gson
 import org.json.JSONObject
 import sys.process._
