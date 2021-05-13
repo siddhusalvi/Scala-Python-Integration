@@ -3,7 +3,8 @@ package async
 import java.io.{BufferedReader, InputStreamReader, PrintStream}
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{Future, Promise}
+import scala.concurrent.duration.{Duration, SECONDS}
+import scala.concurrent.{Await, Future, Promise}
 import scala.util.{Failure, Success}
 
 object FutureExample {
@@ -35,7 +36,8 @@ object FutureExample {
     }
 
     results.foreach(println(_))
-
+    val duration = Duration(2,SECONDS)
+    Await.result(results,duration)
 
   }
 

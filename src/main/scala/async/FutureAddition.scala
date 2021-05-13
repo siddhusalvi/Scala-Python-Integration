@@ -1,8 +1,9 @@
 package async
 
 import java.io.FileWriter
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration.{Duration, SECONDS}
 import scala.util.{Failure, Success}
 object FutureAddition {
   def main(args: Array[String]): Unit = {
@@ -14,12 +15,11 @@ object FutureAddition {
     }
 
     producer.onComplete{
-      case Success(value) => writeFile(value.toString)
+      case Success(value) => println(value.toString)
       case Failure(failure) =>writeFile(failure.toString)
     }
-
-
-    Thread.sleep(5000)
+    val duration = Duration(2,SECONDS)
+    Await.result(producer,duration)
 
   }
 

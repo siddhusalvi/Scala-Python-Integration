@@ -2,18 +2,13 @@ package async
 import java.io._
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{Future, Promise}
+import scala.concurrent.duration.{Duration, SECONDS}
+import scala.concurrent.{Await, Future, Promise}
 import scala.util.{Failure, Success}
-
-object Executor{
-
-}
 
 object FutureFirstCode {
 
   def main(args: Array[String]): Unit = {
-
-
     val p = Promise[String]()
     val f = p.future
 
@@ -43,7 +38,7 @@ object FutureFirstCode {
       f foreach { r => println(r)      }
     }
 
-    Thread.sleep(7000)
+    Await.result(f,Duration.Inf)
 
   }
 
@@ -79,5 +74,4 @@ object FutureFirstCode {
   def listBufferFunction(lst:ListBuffer[String]): Unit ={
     println(lst.toString())
   }
-
   }
