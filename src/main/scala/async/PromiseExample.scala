@@ -20,18 +20,22 @@ object PromiseExample {
 
     // adding single number one by one
     //Assigning Future to the promise
-      p success callPython(nums).toList
+
+    val task =
+      Future{ callPython(nums).toList}
+
+    p completeWith(task)
 
     //some code
     println("running code after calling Future block")
 
     //Attaching callbacks
-    f onComplete {
+    task onComplete {
       case Success(result) => println(result)
       case Failure(t) => println("An error has occurred: " + t.getMessage)
     }
 
-    Await.ready(f,Duration.Inf)
+    Await.ready(task,Duration.Inf)
     println("blocked code till future operation")
 
     //Waiting for infinite time to complete the async operation
