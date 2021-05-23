@@ -7,7 +7,7 @@ import scala.concurrent.{Await, Future, Promise}
 import scala.util.{Failure, Success}
 import scala.concurrent.duration._
 
-object PromiseExample {
+object FuturePythonExample {
   def main(args: Array[String]): Unit = {
 
     //Creating promise
@@ -38,8 +38,6 @@ object PromiseExample {
     Await.ready(task,Duration.Inf)
     println("blocked code till future operation")
 
-    //Waiting for infinite time to complete the async operation
-    Await.result(f,Duration.Inf)
   }
 
   def callPython(nums:List[Int]):ListBuffer[String]={

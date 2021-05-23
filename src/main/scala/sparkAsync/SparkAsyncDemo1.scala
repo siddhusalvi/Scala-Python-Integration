@@ -36,16 +36,8 @@ object SparkAsyncDemo1 {
     println("other operation")
 
 
-//    //Extracting results
-//    output onComplete{
-//      case Success(output) => output.map(IOdata => println(IOdata))
-//      case Failure(t) => println("An error has occurred: " + t.getMessage)
-//    }
-
     println("running some code after future")
 
-    //blocking code
-//    Await.result(output,Duration.Inf)
 
   } catch {
     case NonFatal(e) =>
